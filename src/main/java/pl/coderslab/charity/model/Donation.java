@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Donation {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantity;
     @OneToMany
