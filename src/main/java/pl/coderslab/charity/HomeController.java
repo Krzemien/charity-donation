@@ -3,6 +3,7 @@ package pl.coderslab.charity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
 
@@ -10,14 +11,18 @@ import pl.coderslab.charity.service.InstitutionService;
 public class HomeController {
 
     private final InstitutionService institutionService;
+    private final DonationService donationService;
 
-    public HomeController(InstitutionService institutionService) {
+    public HomeController(InstitutionService institutionService, DonationService donationService) {
         this.institutionService = institutionService;
+        this.donationService = donationService;
     }
 
     @RequestMapping("/")
     public String homeAction(Model model){
         model.addAttribute("institutions",institutionService.showAll());
+        model.addAttribute("bags", donationService.totalBags());
+        model.addAttribute("donations", donationService.totalDonations());
         return "index";
     }
 
