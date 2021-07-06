@@ -28,8 +28,10 @@ public class Donation {
     @Max(value = 100, message = "Maksimum 10")
     private int quantity;
     @OneToMany
+    @NotNull(message = "Nie wybrano żadnej kategorii")
     private List<Category> categories;
     @ManyToOne
+    @NotNull(message = "Nie wybrano instytucji")
     private Institution institution;
     @Size(min = 1, max = 250, message = "Dopuszczalna ilość znaków od 1 do 250")
     private String phoneNumber;

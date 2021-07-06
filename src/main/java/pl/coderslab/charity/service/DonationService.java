@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 @Service
 public class DonationService {
     private DonationRepository donationRepository;
@@ -24,5 +27,9 @@ public class DonationService {
     public long totalDonations(){
 
         return donationRepository.count();
+    }
+
+    public void saveDonation(Donation donation) {
+        donationRepository.save(donation);
     }
 }

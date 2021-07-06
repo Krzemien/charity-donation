@@ -3,8 +3,7 @@ package pl.coderslab.charity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.service.CategoryService;
@@ -28,17 +27,28 @@ public class DonationController {
         this.institutionService = institutionService;
     }
 
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
+//    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    @GetMapping("/form")
     public String formView(Model model){
+        System.out.println("qwe");
         Donation donation = new Donation();
         model.addAttribute("donation", donation);
         model.addAttribute("categories", categoryService.showAll());
         model.addAttribute("institutions", institutionService.showAll());
         return "form";
     }
-    @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String formValid(@Valid Donation donation, BindingResult result){
+//    @RequestMapping(value = "/form", method = RequestMethod.POST)
+    @PostMapping("/form")
+    public String formValid(@ModelAttribute("donation") @Valid Donation donation, BindingResult result, Model model){
+        model.addAttribute("categories", categoryService.showAll());
+        model.addAttribute("institutions", institutionService.showAll());
+        if (result.hasErrors()) {
+            model.addAttribute("info","Formularz zawiera błędy, przejrzyj go jeszcze raz i popraw.");
+            return "form";
+        }
 
-        return "form";
+        donationService.saveDonation(donation);
+        return "redirect:/";
+
     }
 }
