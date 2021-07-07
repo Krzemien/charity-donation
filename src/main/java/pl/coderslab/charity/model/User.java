@@ -21,9 +21,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 60, unique = true)
     @NotBlank
     @Size(min = 2, max = 60, message = "Nazwa musi być o długości 2-60 znaków")
+    @Email
     private String username;
     @Column(nullable = false, length = 60)
     @NotBlank
@@ -32,7 +33,7 @@ public class User {
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     private int enabled;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     @PrePersist

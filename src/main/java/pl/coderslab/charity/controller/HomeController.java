@@ -25,14 +25,14 @@ public class HomeController {
         model.addAttribute("donations", donationService.totalDonations());
         return "index";
     }
-
-    @RequestMapping("/login")
-    public String login(Model model){
-        return "login";
-    }
-
-    @RequestMapping("/register")
-    public String register(Model model){
-        return "register";
-    }
+//
+//    @RequestMapping("/login")
+//    public String login(Model model){
+//        return "login";
+//    }
+//
+//    @RequestMapping("/register")
+//    public String register(Model model){
+//        return "register";
+//    }
 }
