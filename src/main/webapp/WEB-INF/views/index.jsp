@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -61,7 +64,14 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <sec:authorize access="!isAuthenticated()">
+        <a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a>
+    </sec:authorize>
+
+    <sec:authorize access="isAuthenticated()">
+        <a href="<c:url value="/form"/>" class="btn btn--large">Przekaż dar</a>
+    </sec:authorize>
+
 </section>
 
 <section class="about-us" id="about-us">

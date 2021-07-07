@@ -32,6 +32,16 @@
             <form:errors path="password" element="div" />
 
         </div>
+<%--        <div class="form-group">--%>
+<%--            <form:input path="firstName" type="text" placeholder="Imię" />--%>
+<%--            <form:errors path="firstName" element="div" />--%>
+
+<%--        </div>--%>
+<%--        <div class="form-group">--%>
+<%--            <form:input path="lastName" type="text" placeholder="Imię" />--%>
+<%--            <form:errors path="lastName" element="div" />--%>
+
+<%--        </div>--%>
         <div class="form-group">
             <input type="password" name="password2" placeholder="Powtórz hasło" />
         </div>

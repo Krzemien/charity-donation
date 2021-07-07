@@ -30,6 +30,12 @@ public class User {
     @NotBlank
     @Size(min = 2, max = 60, message = "Hasło musi być o długości 2-60 znaków")
     private String password;
+//    @NotBlank
+//    @Size(min = 2, max = 60, message = "Imię musi być o długości 2-60 znaków")
+//    private String firstName;
+//    @NotBlank
+//    @Size(min = 2, max = 60, message = "Nazwisko musi być o długości 2-60 znaków")
+//    private String lastName;
     @Column(name = "created_on")
     private LocalDateTime createdOn;
     private int enabled;
@@ -41,4 +47,15 @@ public class User {
         createdOn = LocalDateTime.now();
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", createdOn=" + createdOn +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
+    }
 }

@@ -16,4 +16,11 @@ public class CurrentUser extends User {
     }
 
     public pl.coderslab.charity.model.User getUser() {return user;}
+
+    @Override
+    public String toString() {
+        return "CurrentUser{" +
+                "user=" + user +
+                '}';
+    }
 }

@@ -9,18 +9,32 @@
         <li><a href="<c:url value="/login"/>" class="btn btn--small btn--without-border">Zaloguj</a></li>
         <li><a href="<c:url value="/register"/>" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </sec:authorize>
+
         <sec:authorize access="isAuthenticated()">
         <li class="logged-user">
             Witaj, <sec:authentication property="principal.username"/>
             <ul class="dropdown">
-                <li><a href="#">Profil</a></li>
-                <li><a href="#">Moje zbiórki</a></li>
+                <li><a href="<c:url value="/user"/>">Profil</a></li>
+                <li><a href="<c:url value="/list"/>">Moje zbiórki</a></li>
                 <li><a href="#">
                     <form action="<c:url value="/logout"/>" method="post">
                         <input type="submit" value="Wyloguj">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                 </a></li>
+            </ul>
+        </li>
+        </sec:authorize>
+
+        <sec:authorize access="hasRole('ADMIN')">
+        <div style="margin-left: 20px;"></div>
+        <li class="logged-user">
+            ADMIN
+            <ul class="dropdown">
+                <li><a href="<c:url value="/admin/institutions"/>">Fundacje</a></li>
+                <li><a href="<c:url value="/admin/donations"/>">Dary</a></li>
+                <li><a href="<c:url value="/admin/users"/>">Użytkownicy</a></li>
+                <li><a href="<c:url value="/admin/admins"/>">Administratorzy</a></li>
             </ul>
         </li>
         </sec:authorize>

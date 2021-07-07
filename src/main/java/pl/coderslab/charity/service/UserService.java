@@ -10,4 +10,5 @@ public interface UserService {
     Optional<User> findById(Long id);
     void saveUser(User user);
     void editUser(User user);
+    void changePassword(User user);
 }
