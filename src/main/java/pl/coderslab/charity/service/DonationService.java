@@ -40,4 +40,8 @@ public class DonationService {
         return donationRepository.findAllByUser(user);
     }
 
+    public List<Donation> showAll(){
+        return donationRepository.findAll();
+    }
+
 }

@@ -29,7 +29,7 @@ public class Donation {
     @Min(value = 1, message = "Minimum 1")
     @Max(value = 100, message = "Maksimum 10")
     private int quantity;
-    @OneToMany
+    @ManyToMany
     @NotNull(message = "Nie wybrano żadnej kategorii")
     private List<Category> categories;
     @ManyToOne

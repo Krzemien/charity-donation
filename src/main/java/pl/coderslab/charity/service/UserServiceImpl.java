@@ -9,6 +9,7 @@ import pl.coderslab.charity.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -53,5 +54,16 @@ public class UserServiceImpl implements UserService {
     public void changePassword(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+//    @Override
+//    public List<User> findAdmins() {
+//        Role role = roleRepository.findByName("ROLE_ADMIN");
+//        return userRepository.findAllByRoles(new HashSet<Role>(Arrays.asList(role)));
+//    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

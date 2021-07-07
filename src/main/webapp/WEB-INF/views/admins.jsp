@@ -22,9 +22,14 @@
 <section class="help" id="help">
     <h2>Lista adminów</h2>
 
-    <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.</p>
-    </div>
+    <c:forEach items="${admins}" var="admin">
+        <div class="help--slides active">
+            <div>
+                <p>ID:  ${admin.id}</p>
+                <p>UserName: ${admin.username}</p>
+            </div>
+        </div>
+    </c:forEach>
 
 </section>
 

@@ -22,9 +22,20 @@
 <section class="help" id="help">
     <h2></h2>
 
-    <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.</p>
-    </div>
+    <c:forEach items="${donations}" var="donation">
+        <div class="help--slides active">
+            <div>
+                <p>ID: ${donation.id}</p>
+                <p>Worki: ${donation.quantity}</p>
+                <p>Ulica: ${donation.street}</p>
+                <p>Miasto: ${donation.city}</p>
+                <p>Kod pocztowy: ${donation.zipCode}</p>
+                <p>Telefon: ${donation.phoneNumber}</p>
+                <p>Data i godzina odbioru: ${donation.pickUpDate}, ${donation.pickUpTime}</p>
+                <p>Komentarz: ${donation.pickUpComment}</p>
+            </div>
+        </div>
+    </c:forEach>
 
 </section>
 

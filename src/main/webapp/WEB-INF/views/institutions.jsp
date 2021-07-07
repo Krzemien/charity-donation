@@ -22,8 +22,23 @@
 <section class="help" id="help">
     <h2>Lista fundacji</h2>
 
-    <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.</p>
+    <c:forEach items="${institutions}" var="institution">
+        <div class="help--slides active">
+            <div>
+                <p>Fundacja "${institution.name}"</p>
+                <p>Cel i misja: ${institution.description}</p>
+                <p><a href="<c:url value="/admin/institution/edit/${institution.id}"/>">Edytuj</a></p>
+                <p><a href="<c:url value="/admin/institution/delete/${institution.id}"/>">Usuń</a></p>
+
+            </div>
+        </div>
+    </c:forEach>
+
+    <div class="help--slides active">
+        <div>
+            <p><a href="<c:url value="/admin/institution/add"/>">Dodaj nową</a></p>
+
+        </div>
     </div>
 
 </section>
